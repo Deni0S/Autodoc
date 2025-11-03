@@ -1,0 +1,3 @@
+struct AppleRestEmptyResponseEntity: Decodable {
+
+}
