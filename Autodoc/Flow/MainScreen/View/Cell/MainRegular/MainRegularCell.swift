@@ -130,6 +130,11 @@ private extension MainRegularCell {
             containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4)
         ])
 
+        containerView.clipsToBounds = true
+        containerView.layer.cornerRadius = 12
+        containerView.layer.cornerCurve = .continuous
+        containerView.backgroundColor = .secondarySystemBackground
+
         containerView.addSubview(backgroundImageView)
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -138,14 +143,47 @@ private extension MainRegularCell {
             backgroundImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             backgroundImageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
+        backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.clipsToBounds = true
+
+        let titleOverlay = UIView()
+        titleOverlay.translatesAutoresizingMaskIntoConstraints = false
+        titleOverlay.backgroundColor = UIColor.black.withAlphaComponent(0.18)
+        titleOverlay.layer.cornerRadius = 8
+        titleOverlay.layer.cornerCurve = .continuous
+        titleOverlay.isUserInteractionEnabled = false
+        containerView.addSubview(titleOverlay)
 
         containerView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.backgroundColor = .clear
+        titleLabel.numberOfLines = 2
+        titleLabel.textColor = .white
+        titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
+        titleLabel.textAlignment = .left
+        titleLabel.layer.shadowColor = UIColor.black.cgColor
+        titleLabel.layer.shadowOpacity = 0.4
+        titleLabel.layer.shadowRadius = 2
+        titleLabel.layer.shadowOffset = CGSize(width: 0, height: 1)
+        titleLabel.layer.masksToBounds = false
+
+        let horizontalPadding: CGFloat = 16
+        let verticalPadding: CGFloat = 8
+        let overlayInset: CGFloat = 8
+
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 12),
-            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12),
-            titleLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: horizontalPadding),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -horizontalPadding),
+            titleLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -verticalPadding),
+
+            titleOverlay.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -overlayInset),
+            titleOverlay.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -overlayInset),
+            titleOverlay.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: overlayInset),
+            titleOverlay.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: overlayInset)
         ])
+
+        containerView.bringSubviewToFront(titleOverlay)
+        containerView.bringSubviewToFront(titleLabel)
     }
 
     func setupSkeletonViews() {

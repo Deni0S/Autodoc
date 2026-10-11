@@ -51,6 +51,10 @@ final class MainViewController: UIViewController {
         super.viewDidAppear(animated)
         beginRefreshing()
     }
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 // MARK: - UICollectionViewDelegate

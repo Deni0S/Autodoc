@@ -79,7 +79,7 @@ final class MainViewModel: ObservableObject {
         }
 
         if let loadedImage = await newsAPI.loadImage(for: url) {
-            Task {
+            Task(priority: .medium) {
                 await cacheAPI.imageService.imageToCache(loadedImage, for: key)
             }
             return loadedImage
