@@ -9,7 +9,7 @@ A test assignment for **Autodoc**: an iOS app that displays a news feed with pag
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="Readme/Dark.gif">
   <source media="(prefers-color-scheme: light)" srcset="Readme/Light.gif">
-  <img alt="Demo" src="Screens/Process-light.gif" width="300">
+  <img alt="Demo" src="Readme/Light.gif" width="300">
 </picture>
 
 ## Requirements

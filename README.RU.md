@@ -6,6 +6,12 @@
 
 Тестовое задание для компании **Autodoc**: iOS-приложение, отображающее новостную ленту с постраничной загрузкой.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Readme/Dark.gif">
+  <source media="(prefers-color-scheme: light)" srcset="Readme/Light.gif">
+  <img alt="Demo" src="Readme/Light.gif" width="300">
+</picture>
+
 ## Требования
 - Постраничная загрузка и отображение новостей
 - Все запросы — на `async/await`
